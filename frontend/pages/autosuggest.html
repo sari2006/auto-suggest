@@ -1,11 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
 <body>
-    <h1>autosuggest</h1>
+
+    <p>&#9881; &bull; online | &#128339; - ms</p>
+
+    <div class="container">
+        <h1>BeingInfinity</h1>
+
+        <p>One million phrases. Four algorithms. Prefix Based Auto Suggest.</p>
+
+        <span>&#128269;</span>
+        <input
+            type="text"
+            id="search"
+            placeholder="Start typing to search phrases..."
+            onkeyup="showSuggestions()"
+            autocomplete="off"
+        >
+
+        <div id="suggestions"></div>
+    </div>
+
+    <script>
+        const phrases = [
+            "apple",
+            "application",
+            "apply",
+            "banana",
+            "ball",
+            "bat",
+            "cat",
+            "car",
+            "coding",
+            "computer",
+            "cricket"
+        ];
+
+        function showSuggestions() {
+            const input = document.getElementById("search").value.toLowerCase();
+            const box = document.getElementById("suggestions");
+
+            box.innerHTML = "";
+
+            if (input === "") return;
+
+            const result = phrases.filter(word => word.startsWith(input));
+
+            result.forEach(word => {
+                const p = document.createElement("p");
+                p.textContent = word;
+                box.appendChild(p);
+            });
+        }
+    </script>
+
 </body>
-</html>
